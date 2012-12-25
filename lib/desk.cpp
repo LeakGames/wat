@@ -17,6 +17,8 @@ sf::RectangleShape *Desktop::addBox(int h, int w, int x, int y, sf::Color color)
 
 void Desktop::deleteBox(sf::RectangleShape *rec) {
   vector<sf::Shape*>::iterator it = find(this->shapes.begin(), this->shapes.end(), rec);
+
+  this->events.erase(rec);
   this->shapes.erase(it);
 
   delete *it;
@@ -62,8 +64,9 @@ void Desktop::loop() {
 
     this->window->clear();
     
-    for (int n = 0; n < this->shapes.size(); n++)
-      this->window->draw(*(this->shapes[n]));
+    std::for_each(this->shapes.begin(), this->shapes.end(), [&] (sf::Shape *shape) {
+      this->window->draw(*shape);
+    });
 
     this->window->display();
   }
