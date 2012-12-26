@@ -9,11 +9,12 @@ using namespace std;
 int main(int argc, char **argv) {
   Desktop desk(800, 800);
  
-  sf::RectangleShape *lal = desk.addBox(100, 100, 100, 100, sf::Color::Green);
+  // sf::RectangleShape *lal = desk.addBox(100, 100, 100, 100, sf::Color::Green);
   
   // desk->deleteBox(lal);
   desk.threadLoop();
 
+  //  desk.addCircle(400, 400, 100, sf::Color::Green);
   lua_State *L = start_lua("es.lua", desk);
   lua_start_file(L);
 

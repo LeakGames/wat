@@ -26,5 +26,9 @@ extern "C" {
 lua_State *start_lua(char *, Desktop &);
 void lua_start_file(lua_State *);
 int API_addBox(lua_State *);
-int API_onClick(lua_State *);
+int API_addCircle(lua_State *);
+int API_onClickBox(lua_State *);
+int API_onClickCircle(lua_State *);
+int API_deleteBox(lua_State *);
+int API_deleteCircle(lua_State *);
 #endif
